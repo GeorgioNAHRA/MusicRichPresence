@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		097206692DA71B4F0015164F /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 097206682DA71B4F0015164F /* AppIcon.icns */; };
+		09E105F02DA6D2AE00C343DC /* MusicRichPresenceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E105E02DA6D2AE00C343DC /* MusicRichPresenceApp.swift */; };
+		09E105F22DA6D2AE00C343DC /* MusicBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E105E32DA6D2AE00C343DC /* MusicBridge.swift */; };
+		09E105F42DA6D2AE00C343DC /* DiscordRPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E105E22DA6D2AE00C343DC /* DiscordRPCManager.swift */; };
+		09E1061F2DA6E0F400C343DC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09E1061E2DA6E0F400C343DC /* Info.plist */; };
+		2E6E06E42711BD880028F77D /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6E06E32711BD880028F77D /* SwordRPC */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0951E8562DA80AAE00C9BC34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		097206682DA71B4F0015164F /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		09A39C712DA9A58100791EF6 /* Music Rich Presence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Rich Presence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09E105E02DA6D2AE00C343DC /* MusicRichPresenceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRichPresenceApp.swift; sourceTree = "<group>"; };
+		09E105E22DA6D2AE00C343DC /* DiscordRPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordRPCManager.swift; sourceTree = "<group>"; };
+		09E105E32DA6D2AE00C343DC /* MusicBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBridge.swift; sourceTree = "<group>"; };
+		09E105E62DA6D2AE00C343DC /* MusicRichPresence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MusicRichPresence.entitlements; sourceTree = "<group>"; };
+		09E1061E2DA6E0F400C343DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0951E8572DA80BFF00C9BC34 /* screenshots */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = screenshots; sourceTree = "<group>"; };
+		09686FE92DA8149300555741 /* assets */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = assets; sourceTree = "<group>"; };
+		097206552DA712C10015164F /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2EF39E06268D912200299C7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E6E06E42711BD880028F77D /* SwordRPC in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09E105E12DA6D2AE00C343DC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				09E105E02DA6D2AE00C343DC /* MusicRichPresenceApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		09E105E52DA6D2AE00C343DC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09E105E22DA6D2AE00C343DC /* DiscordRPCManager.swift */,
+				09E105E32DA6D2AE00C343DC /* MusicBridge.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		09E105E92DA6D2AE00C343DC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				09E105E62DA6D2AE00C343DC /* MusicRichPresence.entitlements */,
+				09E1061E2DA6E0F400C343DC /* Info.plist */,
+				097206682DA71B4F0015164F /* AppIcon.icns */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		09E105EF2DA6D2AE00C343DC /* MusicRichPresence */ = {
+			isa = PBXGroup;
+			children = (
+				097206552DA712C10015164F /* View */,
+				09E105E12DA6D2AE00C343DC /* App */,
+				09E105E52DA6D2AE00C343DC /* Models */,
+				09E105E92DA6D2AE00C343DC /* Resources */,
+			);
+			path = MusicRichPresence;
+			sourceTree = "<group>";
+		};
+		2EF39E00268D912200299C7F = {
+			isa = PBXGroup;
+			children = (
+				09686FE92DA8149300555741 /* assets */,
+				0951E8572DA80BFF00C9BC34 /* screenshots */,
+				0951E8562DA80AAE00C9BC34 /* README.md */,
+				09E105EF2DA6D2AE00C343DC /* MusicRichPresence */,
+				09A39C712DA9A58100791EF6 /* Music Rich Presence.app */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2EF39E08268D912200299C7F /* Music Rich Presence */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EF39E19268D912300299C7F /* Build configuration list for PBXNativeTarget "Music Rich Presence" */;
+			buildPhases = (
+				2EF39E05268D912200299C7F /* Sources */,
+				2EF39E06268D912200299C7F /* Frameworks */,
+				2EF39E07268D912200299C7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				097206552DA712C10015164F /* View */,
+			);
+			name = "Music Rich Presence";
+			packageProductDependencies = (
+				2E6E06E32711BD880028F77D /* SwordRPC */,
+			);
+			productName = AppleMusicRichPresence;
+			productReference = 09A39C712DA9A58100791EF6 /* Music Rich Presence.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2EF39E01268D912200299C7F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					2EF39E08268D912200299C7F = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 2EF39E04268D912200299C7F /* Build configuration list for PBXProject "Music Rich Presence" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2EF39E00268D912200299C7F;
+			packageReferences = (
+				2E6E06E22711BD880028F77D /* XCRemoteSwiftPackageReference "SwordRPC" */,
+			);
+			productRefGroup = 2EF39E00268D912200299C7F;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2EF39E08268D912200299C7F /* Music Rich Presence */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2EF39E07268D912200299C7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09E1061F2DA6E0F400C343DC /* Info.plist in Resources */,
+				097206692DA71B4F0015164F /* AppIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2EF39E05268D912200299C7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09E105F02DA6D2AE00C343DC /* MusicRichPresenceApp.swift in Sources */,
+				09E105F22DA6D2AE00C343DC /* MusicBridge.swift in Sources */,
+				09E105F42DA6D2AE00C343DC /* DiscordRPCManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2EF39E17268D912300299C7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2EF39E18268D912300299C7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		2EF39E1A268D912300299C7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MusicRichPresence/Resources/MusicRichPresence.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MusicRichPresence/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = georgionahra.MusicRichPresence;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2EF39E1B268D912300299C7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MusicRichPresence/Resources/MusicRichPresence.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MusicRichPresence/Resources/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = georgionahra.MusicRichPresence;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2EF39E04268D912200299C7F /* Build configuration list for PBXProject "Music Rich Presence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EF39E17268D912300299C7F /* Debug */,
+				2EF39E18268D912300299C7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EF39E19268D912300299C7F /* Build configuration list for PBXNativeTarget "Music Rich Presence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EF39E1A268D912300299C7F /* Debug */,
+				2EF39E1B268D912300299C7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2E6E06E22711BD880028F77D /* XCRemoteSwiftPackageReference "SwordRPC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PKBeam/SwordRPC";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2E6E06E32711BD880028F77D /* SwordRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E6E06E22711BD880028F77D /* XCRemoteSwiftPackageReference "SwordRPC" */;
+			productName = SwordRPC;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2EF39E01268D912200299C7F /* Project object */;
+}
