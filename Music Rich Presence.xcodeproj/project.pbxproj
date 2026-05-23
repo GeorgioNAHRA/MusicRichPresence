@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		097206692DA71B4F0015164F /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 097206682DA71B4F0015164F /* AppIcon.icns */; };
+		09AD40BA2FC21C2C00930C79 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 09AD40B92FC21C2C00930C79 /* AppIcon.icon */; };
 		09E105F02DA6D2AE00C343DC /* MusicRichPresenceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E105E02DA6D2AE00C343DC /* MusicRichPresenceApp.swift */; };
 		09E105F22DA6D2AE00C343DC /* MusicBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E105E32DA6D2AE00C343DC /* MusicBridge.swift */; };
 		09E105F42DA6D2AE00C343DC /* DiscordRPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E105E22DA6D2AE00C343DC /* DiscordRPCManager.swift */; };
@@ -17,8 +17,8 @@
 
 /* Begin PBXFileReference section */
 		0951E8562DA80AAE00C9BC34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		097206682DA71B4F0015164F /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		09A39C712DA9A58100791EF6 /* Music Rich Presence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Rich Presence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09AD40B92FC21C2C00930C79 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		09E105E02DA6D2AE00C343DC /* MusicRichPresenceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRichPresenceApp.swift; sourceTree = "<group>"; };
 		09E105E22DA6D2AE00C343DC /* DiscordRPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordRPCManager.swift; sourceTree = "<group>"; };
 		09E105E32DA6D2AE00C343DC /* MusicBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBridge.swift; sourceTree = "<group>"; };
@@ -26,9 +26,27 @@
 		09E1061E2DA6E0F400C343DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		09211FD22FC11C6800AF4FC8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				icon.png,
+			);
+			target = 2EF39E08268D912200299C7F /* Music Rich Presence */;
+		};
+		09B456602FC1236F00697E57 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				discord.png,
+				interface.png,
+			);
+			target = 2EF39E08268D912200299C7F /* Music Rich Presence */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0951E8572DA80BFF00C9BC34 /* screenshots */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = screenshots; sourceTree = "<group>"; };
-		09686FE92DA8149300555741 /* assets */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = assets; sourceTree = "<group>"; };
+		0951E8572DA80BFF00C9BC34 /* screenshots */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (09B456602FC1236F00697E57 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = screenshots; sourceTree = "<group>"; };
+		09686FE92DA8149300555741 /* assets */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (09211FD22FC11C6800AF4FC8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = assets; sourceTree = "<group>"; };
 		097206552DA712C10015164F /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -66,7 +84,7 @@
 			children = (
 				09E105E62DA6D2AE00C343DC /* MusicRichPresence.entitlements */,
 				09E1061E2DA6E0F400C343DC /* Info.plist */,
-				097206682DA71B4F0015164F /* AppIcon.icns */,
+				09AD40B92FC21C2C00930C79 /* AppIcon.icon */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -160,7 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09E1061F2DA6E0F400C343DC /* Info.plist in Resources */,
-				097206692DA71B4F0015164F /* AppIcon.icns in Resources */,
+				09AD40BA2FC21C2C00930C79 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,8 +335,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = georgionahra.MusicRichPresence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -347,8 +365,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = georgionahra.MusicRichPresence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

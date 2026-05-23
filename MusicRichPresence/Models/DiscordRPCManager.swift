@@ -38,8 +38,8 @@ class DiscordRPCManager: ObservableObject {
     @Published var isDiscordConnected = false
     @Published var isChangingConnectionStatus = true
 
-    @AppStorage("showAlbumArt") var showAlbumArt = true
-    @AppStorage("showPlaybackIndicator") var showPlaybackIndicator = true
+    let showAlbumArt = true
+    let showPlaybackIndicator = true
 
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "AMRPC", category: "Discord")
     private let decoder = JSONDecoder()
@@ -47,27 +47,22 @@ class DiscordRPCManager: ObservableObject {
     private let notificationCenter = DistributedNotificationCenter.default()
     private var notificationObserver: NSObjectProtocol?
     private var rpc: SwordRPC!
-    private var trackStartDate: Date?
-
+    @Published var trackStartDate: Date? = nil
+    private var periodicTimer: Timer?
+ 
     init() {
         logger.info("Initializing DiscordRPCManager")
         createRPCInstance()
         isDiscordConnected = rpc.connect()
-
-        // Update presence every 15s only when Rich Presence is on
-        Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { _ in
-            if self.isDiscordConnected {
-                self.setDiscordPresence()
-            }
-        }
-
-        // Update song info every 5s when Discord is off or Rich Presence is off
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-            if !self.isDiscordConnected {
-                self.updateTrackManually()
+ 
+        // Periodically check player position, seek drift, track and state updates every 1.5 seconds
+        periodicTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.periodicCheck()
             }
         }
     }
+
 
     private func createRPCInstance() {
         rpc = SwordRPC(appId: "919349769682427985")
@@ -165,6 +160,68 @@ class DiscordRPCManager: ObservableObject {
         updateArtworkAndPresence()
     }
 
+    private func periodicCheck() {
+        guard let musicApp = musicApp, musicApp.isRunning else {
+            if rpcData.state != .stopped {
+                rpcData = TrackData(state: .stopped)
+                artwork = AlbumArtwork()
+                trackStartDate = nil
+                setDiscordPresence()
+            }
+            return
+        }
+
+        let state = convert(playerState: musicApp.playerState)
+        let playerPos = musicApp.playerPosition ?? 0
+        let track = musicApp.currentTrack
+
+        let trackName = track?.name?.nonEmpty
+        let trackArtist = track?.artist?.nonEmpty
+        let trackAlbum = track?.album?.nonEmpty
+        let trackTotalTime = track?.finish
+
+        var needsPresenceUpdate = false
+
+        // 1. Detect track or state changes
+        if trackName != rpcData.name ||
+           trackArtist != rpcData.artist ||
+           trackAlbum != rpcData.album ||
+           state != rpcData.state ||
+           trackTotalTime != rpcData.totalTime {
+
+            rpcData.name = trackName
+            rpcData.artist = trackArtist
+            rpcData.album = trackAlbum
+            rpcData.totalTime = trackTotalTime
+            rpcData.state = state
+
+            if state == .playing {
+                trackStartDate = Date().addingTimeInterval(-playerPos)
+            } else {
+                trackStartDate = nil
+            }
+
+            needsPresenceUpdate = true
+        } else if state == .playing {
+            // 2. Detect seeks (drift) when playing
+            if let start = trackStartDate {
+                let calculatedElapsed = Date().timeIntervalSince(start)
+                if abs(calculatedElapsed - playerPos) > 2.0 {
+                    trackStartDate = Date().addingTimeInterval(-playerPos)
+                    needsPresenceUpdate = true
+                }
+            } else {
+                trackStartDate = Date().addingTimeInterval(-playerPos)
+                needsPresenceUpdate = true
+            }
+        }
+
+        if needsPresenceUpdate {
+            updateArtworkAndPresence()
+        }
+    }
+
+
     private func updateArtworkAndPresence() {
         guard showAlbumArt,
               let album = rpcData.album,
@@ -209,12 +266,10 @@ class DiscordRPCManager: ObservableObject {
         presence.assets.largeText = rpcData.album
 
         if rpcData.state == .playing,
-           let duration = rpcData.totalTime,
-           let _ = musicApp?.playerPosition,
            let start = trackStartDate {
             presence.timestamps.start = start
-            presence.timestamps.end = start.addingTimeInterval(duration)
         }
+
 
         if showPlaybackIndicator {
             presence.assets.smallText = rpcData.state.rawValue.capitalized
@@ -261,5 +316,121 @@ class DiscordRPCManager: ObservableObject {
 fileprivate extension String {
     var nonEmpty: String? {
         self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : self
+    }
+}
+
+// MARK: - App Update Manager
+class AppUpdateManager: ObservableObject {
+    enum UpdateStatus: Equatable {
+        case idle
+        case checking
+        case updateAvailable(version: String, url: URL)
+        case upToDate
+        case error(String)
+    }
+
+    @Published var status: UpdateStatus = .idle
+    @Published var showAlert = false
+
+    private struct GitHubRelease: Decodable {
+        struct Asset: Decodable {
+            let browserDownloadUrl: URL
+        }
+        let tagName: String
+        let htmlUrl: URL
+        let assets: [Asset]
+    }
+
+    func checkForUpdates(manually: Bool = true) {
+        status = .checking
+
+        guard let url = URL(string: "https://api.github.com/repos/GeorgioNAHRA/MusicRichPresence/releases/latest") else {
+            DispatchQueue.main.async {
+                self.status = .error("Invalid update URL")
+                if manually {
+                    self.showAlert = true
+                }
+            }
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.setValue("MusicRichPresence-Updater", forHTTPHeaderField: "User-Agent")
+        request.timeoutInterval = 10
+
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            guard let self = self else { return }
+
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.status = .error(error.localizedDescription)
+                    if manually {
+                        self.showAlert = true
+                    }
+                }
+                return
+            }
+
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    self.status = .error("No data received from update server")
+                    if manually {
+                        self.showAlert = true
+                    }
+                }
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let release = try decoder.decode(GitHubRelease.self, from: data)
+
+                // Locate direct download link if available, fallback to release page URL
+                let downloadUrl = release.assets.first?.browserDownloadUrl ?? release.htmlUrl
+                let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+
+                DispatchQueue.main.async {
+                    if self.isVersion(release.tagName, newerThan: currentVersion) {
+                        self.status = .updateAvailable(version: release.tagName, url: downloadUrl)
+                        self.showAlert = true
+                    } else {
+                        self.status = .upToDate
+                        if manually {
+                            self.showAlert = true
+                        }
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.status = .error("Failed to parse update info")
+                    if manually {
+                        self.showAlert = true
+                    }
+                }
+            }
+        }.resume()
+    }
+
+    /// Verifies if `newVersion` is semantically newer than `currentVersion`
+    private func isVersion(_ newVersion: String, newerThan currentVersion: String) -> Bool {
+        let cleanNew = newVersion.trimmingCharacters(in: CharacterSet(charactersIn: "vV "))
+        let cleanCurrent = currentVersion.trimmingCharacters(in: CharacterSet(charactersIn: "vV "))
+
+        let newComponents = cleanNew.split(separator: ".").compactMap { Int($0) }
+        let currentComponents = cleanCurrent.split(separator: ".").compactMap { Int($0) }
+
+        let count = max(newComponents.count, currentComponents.count)
+        for i in 0..<count {
+            let newPart = i < newComponents.count ? newComponents[i] : 0
+            let currentPart = i < currentComponents.count ? currentComponents[i] : 0
+
+            if newPart > currentPart {
+                return true
+            } else if newPart < currentPart {
+                return false
+            }
+        }
+        return false
     }
 }

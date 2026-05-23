@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+__MACOSX/
+
+# Xcode user-specific files
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+xcschememanagement.plist
+
+# Xcode build outputs
+build/
+DerivedData/
+
+# Swift Package Manager
+.swiftpm/
+.build/
+
+# Signing / secrets
+.env
+*.p12
+*.cer
+*.mobileprovision
+*.provisionprofile
+
+# Logs
+*.log
